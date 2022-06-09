@@ -12,7 +12,7 @@ function initials() {
     "All",
     `The $[kind] $[count] $[kind]s ago`,
     `From $[count] $[kind]s ago till today`,
-    `From $[count] $[kind]s ago to $[toCount] ago`,
+    `From $[count] $[kind]s ago to $[toCount] $[kind]s ago`,
   ];
   const main = 0;
 
