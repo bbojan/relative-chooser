@@ -145,8 +145,10 @@ export default function Chooser() {
                 const v = Math.max(cMin, Math.min(val, cMax));
                 setCount(v);
                 //
-                const to = Math.max(0, Math.min(toCount, v - 1));
-                setToCount(to);
+                if (kind === toKind) {
+                  const to = Math.max(0, Math.min(toCount, v - 1));
+                  setToCount(to);
+                }
               }}
               type="number"
               min={cMin}
@@ -197,8 +199,10 @@ export default function Chooser() {
                     const v = Math.max(0, Math.min(val, cMax - 1));
                     setToCount(v);
                     //
-                    const from = Math.min(cMax, Math.max(v + 1, count));
-                    setCount(from);
+                    if (kind === toKind) {
+                      const from = Math.min(cMax, Math.max(v + 1, count));
+                      setCount(from);
+                    }
                   }}
                   type="number"
                   min={0}
