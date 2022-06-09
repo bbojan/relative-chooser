@@ -7,6 +7,7 @@ function initials() {
 
   const kinds = ["day", "week", "month", "quarter", "year"];
   const kind = "month";
+  const toKind = "month";
 
   const mainOptions = [
     "All",
@@ -35,6 +36,7 @@ function initials() {
   return {
     kinds,
     kind,
+    toKind,
     count,
     toCount,
     mainOptions,
@@ -53,6 +55,7 @@ export default function Chooser() {
     initialized;
 
   const [kind, setKind] = useState(initialized.kind);
+  const [toKind, setToKind] = useState(initialized.toKind);
 
   const [main, setMain] = useState(initialized.main);
   const [secondary, setSecondary] = useState(initialized.secondary);
@@ -66,23 +69,6 @@ export default function Chooser() {
   }, [kind, maxes]);
 
   const cMin = main === 3 ? 1 : 0;
-
-  const kindElement = (
-    <select
-      value={kind}
-      onChange={(e) => {
-        const val = e.target.value;
-        setKind(val);
-      }}
-      style={{ margin: 6 }}
-    >
-      {kinds.map((o, i) => (
-        <option key={i} value={o}>
-          {`${o}s`}
-        </option>
-      ))}
-    </select>
-  );
 
   return (
     <div>
@@ -167,7 +153,20 @@ export default function Chooser() {
               max={cMax}
               style={{ margin: 6 }}
             />
-            {kindElement}
+            <select
+              value={kind}
+              onChange={(e) => {
+                const val = e.target.value;
+                setKind(val);
+              }}
+              style={{ margin: 6 }}
+            >
+              {kinds.map((o, i) => (
+                <option key={i} value={o}>
+                  {`${o}s`}
+                </option>
+              ))}
+            </select>
             <span style={{ margin: 6 }}>ago</span>
             {(main === 2 || main === 3) && (
               <select
@@ -206,7 +205,20 @@ export default function Chooser() {
                   max={cMax}
                   style={{ margin: 6 }}
                 />
-                {kindElement}
+                <select
+                  value={toKind}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setToKind(val);
+                  }}
+                  style={{ margin: 6 }}
+                >
+                  {kinds.map((o, i) => (
+                    <option key={i} value={o}>
+                      {`${o}s`}
+                    </option>
+                  ))}
+                </select>
                 <span style={{ margin: 6 }}>ago</span>
               </>
             )}
