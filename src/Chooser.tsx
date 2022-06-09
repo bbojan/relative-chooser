@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 
 function initials() {
@@ -134,6 +134,9 @@ export default function Chooser() {
                 setSecondary(val);
                 if (val === mainOptions[initialized.main]) {
                   setMain(initialized.main);
+                }
+                if (val === secondaryOptions[1]) {
+                  setMain(1);
                 }
                 if (val === secondaryOptions[2]) {
                   const m = third === initialized.third ? 2 : 3;
